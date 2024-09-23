@@ -3,7 +3,7 @@
 <BODY>
 <?php
     $num="-1";
-    $copia = $num;
+    $numCopia = $num;
     $factorial = 1;
     if ($num == 0)
     {
@@ -20,7 +20,7 @@
         $factorial *= $num;
         $num -= 1;
         }
-        echo "El factorial de " . $copia . " es " . $factorial;
+        echo "El factorial de " . $numCopia . " es " . $factorial;
     }
 ?>
 </BODY>

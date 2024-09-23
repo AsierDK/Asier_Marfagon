@@ -4,16 +4,16 @@
 <?php
     $num="48";
     $base="8";
-    $numeroEnBase = "";
+    $numBase = "";
     $copia = $num;
     while ($num > 0) 
     {
         $resto = "";
         $resto = $num % $base;
-        $numeroEnBase = $resto . $numeroEnBase;
+        $numBase = $resto . $numBase;
         $num = floor($num/$base);
     }
-    echo "El numero " . $copia . " en base " . $base . " es "  . $numeroEnBase;
+    echo "El numero " . $copia . " en base " . $base . " es "  . $numBase;
 
 
 ?>

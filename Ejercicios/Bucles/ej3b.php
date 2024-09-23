@@ -4,39 +4,39 @@
 <?php
     $num="1515";
     $base="16";
-    $copia = $num;
-    $numeroEnBase = "";
+    $numCopy = $num;
+    $numBase = "";
     while ($num > 0) 
     {
         $resto = "";
         $resto = $num % $base;
         if ($resto < 10) {
-            $numeroEnBase = $resto . $numeroEnBase;
+            $numBase = $resto . $numBase;
         } else {
             switch ($resto) {
                 case '10':
-                    $numeroEnBase = "A" . $numeroEnBase;
+                    $numBase = "A" . $numBase;
                     break;
                 case '11':
-                    $numeroEnBase = "B" . $numeroEnBase;
+                    $numBase = "B" . $numBase;
                     break;
                 case '12':
-                    $numeroEnBase = "C" . $numeroEnBase;
+                    $numBase = "C" . $numBase;
                     break;
                 case '13':
-                    $numeroEnBase = "D" . $numeroEnBase;
+                    $numBase = "D" . $numBase;
                     break;
                 case '14':
-                    $numeroEnBase = "E" . $numeroEnBase;
+                    $numBase = "E" . $numBase;
                     break;
                 case '15':
-                    $numeroEnBase = "F" . $numeroEnBase;
+                    $numBase = "F" . $numBase;
                     break;
             }
         }
         $num = floor($num/$base);
     }
-    echo "El numero " . $copia . " en base " . $base . " es "  . $numeroEnBase;
+    echo "El numero " . $numCopy . " en base " . $base . " es "  . $numBase;
 ?>
 </BODY>
 </HTML>

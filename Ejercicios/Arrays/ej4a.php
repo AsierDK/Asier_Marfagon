@@ -2,25 +2,25 @@
 <HEAD><TITLE> EJ4A – ARRAY INVERSO</TITLE></HEAD>
 <BODY>
 <?php
-    $numBinarios = array();
-    $numeroOct = "";
+    $bin = array();
+    $octal = "";
     print("<table border='1'");
     print("<tr><th>Indice</th><th>Binario</th><th>Octal</th></tr>");
     for ($i=0; $i < 20; $i++) { 
         print("<tr>");
         print("<th>".$i."</th>");
-        $numBinarios[$i] = decbin($i);
-        $numeroOct = decoct($i);
-        print("<th>".$numBinarios[$i]."</th>");
-        print("<th>".$numeroOct."</th>");
+        $bin[$i] = decbin($i);
+        $octal = decoct($i);
+        print("<th>".$bin[$i]."</th>");
+        print("<th>".$octal."</th>");
         print("</tr>");
-        $numeroOct = "";
+        $octal = "";
     }
     print ("</table>");
-    $arrayInverso = array_reverse($numBinarios);
+    $array = array_reverse($bin);
     echo "<h2>Array inverso</h2>";
-    for ($i=0; $i < count($arrayInverso); $i++) { 
-        print("<p>". $arrayInverso[$i] ."</p><br>");
+    for ($i=0; $i < count($array); $i++) {
+        print("<p>". $array[$i] ."</p><br>");
     }
 ?>
 </BODY>
