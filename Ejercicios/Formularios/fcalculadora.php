@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1>Calculadora</h1>
-    <form action="<?php $_SERVER['PHP_SELF']?>" method="post">
+    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post">
         Operando1:<input type="number" name="num1"><br>
         Operando2:<input type="number" name="num2"><br>
         Operacion:<select name="operacion">
@@ -22,8 +22,8 @@
 
 <?php
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $num1 = $_REQUEST['num1'];
-        $num2 = $_REQUEST['num2'];
+        $num1 = limpiar($_REQUEST['num1']);
+        $num2 = limpiar($_REQUEST['num2']);
         $operacion = $_REQUEST['operacion'];
         $resultado = 0;
 
@@ -46,6 +46,12 @@
                 break;
         }
     }
+function limpiar($data) {
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+}
 ?>
 </body>
 </html>
