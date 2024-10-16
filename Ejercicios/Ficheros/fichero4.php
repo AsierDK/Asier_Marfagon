@@ -5,7 +5,7 @@
     <?php
             function recogerDatos()
             {
-                $file = fopen('C:\\wamp64\\www\\files\\alumnos2.txt',"r") or die("No se ha encontrado el fichero");
+                $file = fopen('..\\files\\alumnos2.txt',"r") or die("No se ha encontrado el fichero");
                 imprimirCabecera();
                 while(!feof($file))
                 {
