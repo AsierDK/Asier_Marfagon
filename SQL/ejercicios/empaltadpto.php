@@ -1,5 +1,5 @@
 <?php
-inicio();
+
 
 function inicio(){
     $conn=conexion();
@@ -29,7 +29,7 @@ function trataDatos($conn){
     return $cod;
 }
 
-function conexion($datos)
+function conexion()
 {
     $servername = "localhost";
     $username = "root";
@@ -58,4 +58,6 @@ function insert($conn,$datos)
         echo  $sql."<br>" . $e->getMessage();
     }
 }
+
+inicio();
 ?>
