@@ -12,7 +12,7 @@ function trataDatos($conn){
     try {
         $nombre = $_REQUEST['nombre'];
         $sql = "SELECT cod_dpto FROM dpto";
-        $conn->query($sql);
+        var_dump($conn->query($sql));
         $conn->setFetchMode(PDO::FETCH_ASSOC);
         $ids=$conn->fetchAll();
         $id = '';
