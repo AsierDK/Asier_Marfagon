@@ -9,18 +9,23 @@ function inicio(){
 }
 
 function trataDatos($conn){
-    $nombre=$_REQUEST['nombre'];
-    $sql="SELECT cod_dpto FROM dpto";
-    $ids=$conn->query($sql);
-    $numero=intval(substr($ids[count($ids)-1],1)) + 1;
-    $id='';
-    if($numero < 10)
-        $id =  substr($ids[count($ids)-1],0,1) . "0" . "0" . strval($numero);
-    elseif($numero < 100)
-        $id =  substr($ids[count($ids)-1],0,1) . "0". strval($numero);
-    else
-        $id =  substr($ids[count($ids)-1],0,1) . strval($numero);
-    $cod=[$id,$nombre];
+    try {
+        $nombre = $_REQUEST['nombre'];
+        $sql = "SELECT cod_dpto FROM dpto";
+        $ids = $conn->query($sql);
+        $numero = intval(substr($ids[count($ids) - 1], 1)) + 1;
+        $id = '';
+        if ($numero < 10)
+            $id = substr($ids[count($ids) - 1], 0, 1) . "0" . "0" . strval($numero);
+        elseif ($numero < 100)
+            $id = substr($ids[count($ids) - 1], 0, 1) . "0" . strval($numero);
+        else
+            $id = substr($ids[count($ids) - 1], 0, 1) . strval($numero);
+        $cod = [$id, $nombre];
+    }
+    catch(PDOException $e){
+        echo  $sql."<br>" . $e->getMessage();
+    }
     return $cod;
 }
 
@@ -43,9 +48,14 @@ function conexion($datos)
 
 function insert($conn,$datos)
 {
-    $sql = "INSERT INTO dpto (cod_dpto, nombre) VALUES ('$datos[0]','$datos[1]')";
-    // use exec() because no results are returned
-    $conn->exec($sql);
-    echo "New record created successfully";
+    try{
+        $sql = "INSERT INTO dpto (cod_dpto, nombre) VALUES ('$datos[0]','$datos[1]')";
+        // use exec() because no results are returned
+        $conn->exec($sql);
+        echo "New record created successfully";
+    }
+    catch(PDOException $e){
+        echo  $sql."<br>" . $e->getMessage();
+    }
 }
 ?>
