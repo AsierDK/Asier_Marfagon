@@ -26,12 +26,12 @@ function trataDatos($conn){
             $cod =  substr($codBBDD,0,1) . "0". strval($num);
         else
             $cod =  substr($codBBDD,0,1) . strval($num);
+        $cod=[$cod,$_REQUEST['nombre']];
         return $cod;
     }
     catch(PDOException $e){
         echo  $sql."<br>" . $e->getMessage();
     }
-    return $cod;
 }
 
 function conexion()
