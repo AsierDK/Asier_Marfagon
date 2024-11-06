@@ -13,14 +13,24 @@ function trataDatos($conn){
         $nombre = $_REQUEST['nombre'];
         $sql = "SELECT cod_dpto FROM dpto";
         $ids = $conn->query($sql);
-        $numero = intval(substr($ids[count($ids) - 1], 1)) + 1;
         $id = '';
-        if ($numero < 10)
-            $id = substr($ids[count($ids) - 1], 0, 1) . "0" . "0" . strval($numero);
-        elseif ($numero < 100)
-            $id = substr($ids[count($ids) - 1], 0, 1) . "0" . strval($numero);
-        else
-            $id = substr($ids[count($ids) - 1], 0, 1) . strval($numero);
+        if(gettype($ids)=="array") {
+            $numero = intval(substr($ids[count($ids) - 1], 1)) + 1;
+            if ($numero < 10)
+                $id = substr($ids[count($ids) - 1], 0, 1) . "0" . "0" . strval($numero);
+            elseif ($numero < 100)
+                $id = substr($ids[count($ids) - 1], 0, 1) . "0" . strval($numero);
+            else
+                $id = substr($ids[count($ids) - 1], 0, 1) . strval($numero);
+        }else{
+            $numero = intval(substr($ids, 1)) + 1;
+            if ($numero < 10)
+                $id = substr($ids, 0, 1) . "0" . "0" . strval($numero);
+            elseif ($numero < 100)
+                $id = substr($ids, 0, 1) . "0" . strval($numero);
+            else
+                $id = substr($ids, 0, 1) . strval($numero);
+        }
         $cod = [$id, $nombre];
     }
     catch(PDOException $e){
