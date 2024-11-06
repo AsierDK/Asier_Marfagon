@@ -12,7 +12,9 @@ function trataDatos($conn){
     try {
         $nombre = $_REQUEST['nombre'];
         $sql = "SELECT cod_dpto FROM dpto";
-        $ids = $conn->query($sql);
+        $conn->query($sql);
+        $conn->setFetchMode(PDO::FETCH_ASSOC);
+        $ids=$conn->fetchAll();
         $id = '';
         if(gettype($ids)=="array") {
             $numero = intval(substr($ids[count($ids) - 1], 1)) + 1;
