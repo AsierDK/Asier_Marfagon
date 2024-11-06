@@ -10,7 +10,8 @@ function inicio(){
 
 function trataDatos($conn){
     try {
-        $stmt = $conn->prepare("SELECT cod_dpto FROM dpto");
+        $sql="SELECT cod_dpto FROM dpto";
+        $stmt = $conn->prepare($sql);
         $codBBDD = null;
         $stmt->execute();
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
