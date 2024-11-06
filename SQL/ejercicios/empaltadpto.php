@@ -10,30 +10,22 @@ function inicio(){
 
 function trataDatos($conn){
     try {
-        $nombre = $_REQUEST['nombre'];
-        $sql = "SELECT cod_dpto FROM dpto";
-        var_dump($conn->query($sql));
-        $conn->setFetchMode(PDO::FETCH_ASSOC);
-        $ids=$conn->fetchAll();
-        $id = '';
-        if(gettype($ids)=="array") {
-            $numero = intval(substr($ids[count($ids) - 1], 1)) + 1;
-            if ($numero < 10)
-                $id = substr($ids[count($ids) - 1], 0, 1) . "0" . "0" . strval($numero);
-            elseif ($numero < 100)
-                $id = substr($ids[count($ids) - 1], 0, 1) . "0" . strval($numero);
-            else
-                $id = substr($ids[count($ids) - 1], 0, 1) . strval($numero);
-        }else{
-            $numero = intval(substr($ids, 1)) + 1;
-            if ($numero < 10)
-                $id = substr($ids, 0, 1) . "0" . "0" . strval($numero);
-            elseif ($numero < 100)
-                $id = substr($ids, 0, 1) . "0" . strval($numero);
-            else
-                $id = substr($ids, 0, 1) . strval($numero);
+        $stmt = $conn->prepare("SELECT cod_dpto FROM dpto");
+        $codBBDD = null;
+        $stmt->execute();
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $resultado=$stmt->fetchAll();
+        foreach($resultado as $row) {
+            $codBBDD = $row["cod_dpto"];
         }
-        $cod = [$id, $nombre];
+        $num = intval(substr($codBBDD,1)) + 1;
+        if($num < 10)
+            $cod =  substr($codBBDD,0,1) . "0" . "0" . strval($num);
+        elseif($num < 100)
+            $cod =  substr($codBBDD,0,1) . "0". strval($num);
+        else
+            $cod =  substr($codBBDD,0,1) . strval($num);
+        return $cod;
     }
     catch(PDOException $e){
         echo  $sql."<br>" . $e->getMessage();
