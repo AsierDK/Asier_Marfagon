@@ -64,11 +64,11 @@
         {
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $conn->beginTransaction();
-            $stmt = $conn->prepare("INSERT INTO emple (dni,nombre,salario,fec_nac) VALUES (:dni,:nombre,:salario,:fec_nac)");
+            $stmt = $conn->prepare("INSERT INTO emple (dni,nombre,salario,fecha_nac) VALUES (:dni,:nombre,:salario,:fecha_nac)");
             $stmt->bindParam(':dni', $dni);
             $stmt->bindParam(':nombre', $nombre);
             $stmt->bindParam(':salario', $salario);
-            $stmt->bindParam(':fec_nac', $fecha);
+            $stmt->bindParam(':fecha_nac', $fecha);
             $stmt->execute();
             $stmt = $conn->prepare("INSERT INTO emple_dpto (dni,cod_dpto,fecha_ini) VALUES (:dni,:dpto,curdate())");
             $stmt->bindParam(':dni', $dni);

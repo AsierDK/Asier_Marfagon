@@ -22,7 +22,7 @@
     {
         $conn = conexionBBDD();
         try{
-            $stmt = $conn->prepare("SELECT dni,ed.cod_dpto cod,d.nombre nombreDept FROM emple_dpto ed,dpto d where ed.cod_dpto = d.cod_dpto AND fecha_fi IS NULL");
+            $stmt = $conn->prepare("SELECT dni,ed.cod_dpto cod,d.nombre nombreDept FROM emple_dpto ed,dpto d where ed.cod_dpto = d.cod_dpto AND fecha_fin IS NULL");
             $stmt->execute();
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
             $resultado=$stmt->fetchAll();
@@ -70,7 +70,7 @@
         $conn = conexionBBDD();
         try 
         {
-            $stmt = $conn->prepare("SELECT fecha_ini from emple_dpto where dni= :dni and cod_dpto= :dptoAnt and fecha_fi is NULL");
+            $stmt = $conn->prepare("SELECT fecha_ini from emple_dpto where dni= :dni and cod_dpto= :dptoAnt and fecha_fin is NULL");
             $stmt->bindParam(':dni', $dni);
             $stmt->bindParam(':dptoAnt', $dpto_anterior);
             $stmt->execute(); 
@@ -83,7 +83,7 @@
             
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $conn->beginTransaction();
-            $stmt = $conn->prepare("UPDATE emple_dpto set fecha_fi=curdate() where dni= :dni and cod_dpto= :dptoAnt and fecha_ini = :fecha_inicio");
+            $stmt = $conn->prepare("UPDATE emple_dpto set fecha_fin=curdate() where dni= :dni and cod_dpto= :dptoAnt and fecha_fin is null");
             $stmt->bindParam(':dni', $dni);
             $stmt->bindParam(':dptoAnt', $dpto_anterior);
             $stmt->bindParam(':fecha_inicio', $fecha_inicio);

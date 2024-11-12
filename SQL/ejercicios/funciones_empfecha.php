@@ -31,7 +31,7 @@
         $conn = conexionBBDD();
         try 
         {
-            $stmt = $conn->prepare("SELECT dni,cod_dpto,fecha_ini,fecha_fi from emple_dpto where fecha_ini <=:fecha and (fecha_fi>=:fecha or fecha_fi is null)");
+            $stmt = $conn->prepare("SELECT dni,cod_dpto,fecha_ini,fecha_fifecha_fin from emple_dpto where fecha_ini <=:fecha and (fecha_fin>=:fecha or fecha_fin is null)");
             $stmt->bindParam(':fecha', $fecha);
             $stmt->execute(); 
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
@@ -42,10 +42,10 @@
             {
                 foreach($resultado as $row) {
                     $fecha_fin = '';
-                    if($row["fecha_fi"] == null)
+                    if($row["fecha_fin"] == null)
                         $fecha_fin = "Sigue Trabajando en el Departamento";
                     else
-                        $fecha_fin = $row["fecha_fi"];
+                        $fecha_fin = $row["fecha_fin"];
 
                     print "<tr><td>".$row["dni"]."</td><td>".$row["cod_dpto"]."</td><td>".$row["fecha_ini"]."</td><td>".$fecha_fin."</td></tr>";
                 }

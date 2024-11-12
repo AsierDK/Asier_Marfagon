@@ -10,7 +10,7 @@ function inicio(){
 
 function trataDatos($conn){
     try {
-        $sql="SELECT cod_dpto FROM dpto";
+        $sql="SELECT max(cod_dpto) FROM dpto";
         $stmt = $conn->prepare($sql);
         $codBBDD = null;
         $stmt->execute();
