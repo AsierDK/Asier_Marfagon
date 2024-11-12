@@ -42,7 +42,7 @@
     function recogerDatos()
     {
         $dni = limpiar($_POST['dni']);
-        $nombre = limpiar($_POST['nombre_emple']);
+        $nombre = limpiar($_POST['nombre']);
         $fecha = limpiar($_POST['fecha_nac']);
         $salario = intval(limpiar($_POST['salario']));
         $dpto = limpiar($_POST['departamentos']);
