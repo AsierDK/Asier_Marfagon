@@ -70,23 +70,12 @@
         $conn = conexionBBDD();
         try 
         {
-            $stmt = $conn->prepare("SELECT fecha_ini from emple_dpto where dni= :dni and cod_dpto= :dptoAnt and fecha_fin is NULL");
-            $stmt->bindParam(':dni', $dni);
-            $stmt->bindParam(':dptoAnt', $dpto_anterior);
-            $stmt->execute(); 
-            $stmt->setFetchMode(PDO::FETCH_ASSOC);
-            $resultado=$stmt->fetchAll();
-            $fecha_inicio = '';
-            foreach($resultado as $row) {
-                $fecha_inicio = $row["fecha_ini"];
-            }
-            
+
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $conn->beginTransaction();
             $stmt = $conn->prepare("UPDATE emple_dpto set fecha_fin=curdate() where dni= :dni and cod_dpto= :dptoAnt and fecha_fin is null");
             $stmt->bindParam(':dni', $dni);
             $stmt->bindParam(':dptoAnt', $dpto_anterior);
-            $stmt->bindParam(':fecha_inicio', $fecha_inicio);
             $stmt->execute();
             $stmt = $conn->prepare("INSERT INTO emple_dpto (dni,cod_dpto,fecha_ini) VALUES (:dni,:dptoNue,curdate())");
             $stmt->bindParam(':dni', $dni);
