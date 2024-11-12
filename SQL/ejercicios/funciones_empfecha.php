@@ -31,7 +31,7 @@
         $conn = conexionBBDD();
         try 
         {
-            $stmt = $conn->prepare("SELECT dni,cod_dpto,fecha_ini,fecha_fifecha_fin from emple_dpto where fecha_ini <=:fecha and (fecha_fin>=:fecha or fecha_fin is null)");
+            $stmt = $conn->prepare("SELECT dni,cod_dpto,fecha_ini,fecha_fin from emple_dpto where fecha_ini <=:fecha and (fecha_fin>=:fecha or fecha_fin is null)");
             $stmt->bindParam(':fecha', $fecha);
             $stmt->execute(); 
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
