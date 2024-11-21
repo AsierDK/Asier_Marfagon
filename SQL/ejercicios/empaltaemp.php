@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Calculadora</title>
-    <?php include_once "func_empaltaemp.php"?>
+    <?php include_once "funciones_empaltaemp.php"?>
 </head>
 <body>
 <h1>Calculadora</h1>
