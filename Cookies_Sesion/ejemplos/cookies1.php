@@ -21,7 +21,6 @@ También se puede emplear $_REQUEST, que contiene la unión de $_COOKIE, $_POST 
 $cookie_name = "usuario";
 $cookie_value = "Alfonso Rebolleda";
 setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 segundos = 1 día
-
 ?>
 <html>
 <body>
