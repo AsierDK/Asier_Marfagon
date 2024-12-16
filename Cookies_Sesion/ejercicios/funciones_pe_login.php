@@ -18,6 +18,8 @@ function comprobarlogin($user_c,$password_c){
         }else{
             trigger_error("Usuario bloqueado", E_USER_ERROR);
         }
+    }else{
+        trigger_error("Usuario no encontrados", E_USER_ERROR);
     }
 }
 function crearSesion(){
