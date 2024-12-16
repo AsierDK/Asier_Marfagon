@@ -7,7 +7,7 @@ function comprobarlogin($user_c,$password_c){
         if (!in_array($user_b,$_SESSION["usuarios"])){
             $_SESSION["usuarios"][$user_c] = 0;
         }
-        if($_SESSION["usuarios"][$user_b]<3) {
+        if($_SESSION["usuarios"][$user_c]<3) {
             $i = array_search($user_c,$user_b);
             if ($password_b[$i] == $password_c) {
                 crearCoockie($user_c, $password_c);
