@@ -1,6 +1,7 @@
 <?php
     include_once "funciones_comunes.php";
     include_once "funciones_session.php";
+    include "api/apiRedsys.php";
 
     function imprimirPedido()
     {
@@ -68,6 +69,7 @@
         return $nombre;
         $conn = null;
     }
+
 
     function annadirAlPedido($producto,$cantidad)
     {

@@ -63,7 +63,7 @@
             }
             else
             {
-                trigger_error("No Hay Informacion Disponible Para Las Fechas Seleccionadas");
+                trigger_error("No hay informacion disponible para las fechas seleccionadas");
             }
         }
         catch(PDOException $e)
