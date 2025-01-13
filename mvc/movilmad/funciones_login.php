@@ -1,5 +1,4 @@
 <?php
-    include_once "funciones_comunes.php";
     include_once "funciones_session.php";
 
     function recogerDatos()
