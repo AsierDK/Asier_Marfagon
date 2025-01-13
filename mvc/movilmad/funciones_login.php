@@ -17,7 +17,7 @@
             {
                 $stmt = $conn->prepare("SELECT nombre,apellido from rclientes where email = :email and idcliente = :password");
                 $stmt->bindParam(':email', $email);
-                $stmt->bindParam(':contrasena', $password);
+                $stmt->bindParam(':password', $password);
                 $stmt -> execute();
                 $stmt->setFetchMode(PDO::FETCH_ASSOC);
                 $resultado=$stmt->fetchAll();
