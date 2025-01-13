@@ -12,8 +12,6 @@
     function verificarCliente($email,$password)
     {
         iniciarSession();
-        if(!usuarioBloqueado($email))
-        {
             $conn = conexionBBDD();
             try
             {
@@ -29,10 +27,11 @@
                 }
                 else
                 {
-                    $sesion = $resultado[0]["nombre"]." ".$resultado[0]["apellido"];
-                    inicioCorrecto($sesion,$password);
-                    header("Location: ./movwelcome.php");
-
+                    if(!usuarioBloqueado($password)) {
+                        $sesion = $resultado[0]["nombre"] . " " . $resultado[0]["apellido"];
+                        inicioCorrecto($sesion, $password);
+                        header("Location: ./movwelcome.php");
+                    }
                 }
 
             }
@@ -42,6 +41,30 @@
                 echo "Error: " . $e->getMessage();
             }
             $conn = null;
-        }
     }
+
+function usuarioBloqueado($password){
+    $conn = conexionBBDD();
+    try
+    {
+        $stmt = $conn->prepare("SELECT fecha_baja,pendiente_pago from rclientes where idcliente = :password");
+        $stmt->bindParam(':contrasena', $password);
+        $stmt -> execute();
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $resultado=$stmt->fetchAll();
+        var_dump($resultado);
+        if($resultado == null){
+            $resultado=false;
+        }else{
+            $resultado=true;
+        }
+        return $resultado;
+    }
+    catch(PDOException $e)
+    {
+        $conn -> rollBack();
+        echo "Error: " . $e->getMessage();
+    }
+    $conn = null;
+}
 ?>
