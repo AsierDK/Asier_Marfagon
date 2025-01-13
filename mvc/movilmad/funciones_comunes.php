@@ -1,15 +1,11 @@
 <?php
-
+include_once "movconfig.php";
 function conexionBBDD()
     {
-        $servername = "localhost";
-        $username = "root";
-        $password = "rootroot";
-        $dbname="pedidos";
         $conn = null;
 
         try {
-            $conn = new PDO("mysql:host=$servername;dbname=$dbname",$username, $password);
+            $conn = new PDO("mysql:host=".DB_SERVER.";dbname=".DB_DATABASE,DB_USERNAME, DB_PASSWORD);
             // set the PDO error mode to exception
             $conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
         }
