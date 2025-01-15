@@ -1,7 +1,7 @@
 <?php
-    include_once "funciones_comunes.php";
-    include_once "funciones_session.php";
-    require_once "../models/func_db_login.php";
+    include_once "controllers/funciones_comunes.php";
+    include_once "controllers/funciones_session.php";
+    require_once "models/func_db_login.php";
 
 if(verificarSessionExistente())
     header("Location: controllers/controller_welcome.php");
@@ -22,7 +22,7 @@ elseif($_SERVER["REQUEST_METHOD"] == "POST")
             if(!usuarioBloqueado($password)) {
                 $sesion = $resultado[0]["nombre"] . " " . $resultado[0]["apellido"];
                 inicioCorrecto($sesion, $password);
-                header("Location: ../view/movwelcome.php");
+                header("Location: controllers/funciones_welcome.php");
             }
         }
 
@@ -57,5 +57,5 @@ function usuarioBloqueado($password){
     }
     $conn = null;
 }
-require_once '../view/movlogin.php';
+require_once 'view/movlogin.php';
 ?>

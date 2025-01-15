@@ -13,6 +13,12 @@
             $_SESSION["cliente"]["nombre"] = $sesion;
         }
     }
+    function devolverID(){
+        return $_SESSION["cliente"]["id"];
+    }
+    function devolvernombre(){
+        return $_SESSION["cliente"]["nombre"];
+    }
 
     function eliminarSession()
     {
