@@ -1,4 +1,6 @@
 <?php
+require_once '../db/db.php';
+
 function db_login($email,$password){
     $conn=conexionbbdd();
     $stmt = $conn->prepare("SELECT nombre,apellido from rclientes where email = :email and idcliente = :password");
