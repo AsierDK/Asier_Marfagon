@@ -25,7 +25,7 @@
                     if(!usuarioBloqueado($password)) {
                         $sesion = $resultado[0]["nombre"] . " " . $resultado[0]["apellido"];
                         inicioCorrecto($sesion, $password);
-                        header("Location: movwelcome.php");
+                        header("Location: view/movwelcome.php");
                     }
                 }
 
