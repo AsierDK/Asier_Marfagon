@@ -1,6 +1,6 @@
 <?php
-    include_once "../funciones_comunes.php";
-    include_once "../funciones_session.php";
+    include_once "funciones_comunes.php";
+    include_once "funciones_session.php";
     require_once "models/func_db_login.php";
 
     function recogerDatos()
