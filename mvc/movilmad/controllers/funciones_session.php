@@ -4,7 +4,13 @@
     {
         session_start();
     }
-
+    function verificarSessionExistente()
+    {
+        $sessionCreada = false;
+        if(isset($_SESSION["cliente"]))
+            $sessionCreada = true;
+        return $sessionCreada;
+    }
     function inicioCorrecto($sesion,$password)
     {
         if(!(isset($_SESSION["cliente"])))
