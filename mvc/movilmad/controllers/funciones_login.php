@@ -1,6 +1,6 @@
 <?php
-    include_once "funciones_comunes.php";
-    include_once "funciones_session.php";
+    include_once "../funciones_comunes.php";
+    include_once "../funciones_session.php";
     require_once "models/func_db_login.php";
 
     function recogerDatos()
@@ -25,7 +25,7 @@
                     if(!usuarioBloqueado($password)) {
                         $sesion = $resultado[0]["nombre"] . " " . $resultado[0]["apellido"];
                         inicioCorrecto($sesion, $password);
-                        header("Location: view/movwelcome.php");
+                        header("Location: ../view/movwelcome.php");
                     }
                 }
 
