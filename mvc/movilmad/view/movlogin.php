@@ -17,7 +17,7 @@
 		<div class="card-header">Login Usuario</div>
 		<div class="card-body">
 		
-		<form id="" name="" action=<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?> method="post" class="card-body">
+		<form id="" name="" action='' method="post" class="card-body">
 		
 		<div class="form-group">
 			Email <input type="text" name="email" placeholder="email" class="form-control">
@@ -28,13 +28,6 @@
         
 		<input type="submit" name="submit" value="Login" class="btn btn-warning disabled">
         </form>
-            <?php
-            if($_SERVER["REQUEST_METHOD"] == "POST")
-            {
-                list($email,$password) = recogerDatos();
-                verificarCliente($email,$password);
-            }
-            ?>
 	    </div>
     </div>
     </div>
