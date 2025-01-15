@@ -4,7 +4,7 @@
 
     function recogerDatos()
     {
-        $email = intval(limpiar($_POST['email']));
+        $email = (limpiar($_POST['email']));
         $password = (limpiar($_POST['password']));
         return [$email,$password];
     }
@@ -17,13 +17,16 @@
             {
                 $stmt = $conn->prepare("SELECT nombre,apellido from rclientes where email = :email and idcliente = :password");
                 $stmt->bindParam(':email', $email);
-                $stmt->bindParam(':password', $password);
+                $stmt->bindParam(':password', intval($password));
                 $stmt -> execute();
                 $stmt->setFetchMode(PDO::FETCH_ASSOC);
                 $resultado=$stmt->fetchAll();
-                if($resultado == null)
+				var_dump($email);var_dump($password);
+				var_dump($resultado);
+                if(empty($resultado))
                 {
-                    trigger_error("Login Erroneo");
+                    sleep(5);
+					trigger_error("Login Erroneo");
                 }
                 else
                 {
