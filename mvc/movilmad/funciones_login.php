@@ -52,7 +52,7 @@ function usuarioBloqueado($password){
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
         $resultado=$stmt->fetchAll();
         var_dump($resultado);
-        if($resultado == null){
+        if($resultado[0]['fecha_baja'] == null && resultado[0]['pendiente_pago']==0){
             $resultado=false;
         }else{
             $resultado=true;
