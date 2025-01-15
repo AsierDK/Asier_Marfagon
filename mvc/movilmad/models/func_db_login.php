@@ -9,10 +9,7 @@ function db_login($email,$password){
     $stmt -> execute();
     $stmt->setFetchMode(PDO::FETCH_ASSOC);
     $resultado=$stmt->fetchAll();
-    var_dump($resultado);
     $conn=null;
-    var_dump($resultado);
-    sleep(5);
     return $resultado;
 }
 function db_bloqueados($password){
