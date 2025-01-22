@@ -47,7 +47,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
         header("Refresh: 0");
     }
     if (isset($_POST["volver"])){
-        header("../view/movwelcome.php");
+        header("Location: funciones_welcome.php");
     }
 }
 function recogerDatos()
