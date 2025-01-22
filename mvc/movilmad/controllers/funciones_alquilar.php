@@ -46,6 +46,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
         vaciarCesta();
         header("Refresh: 0");
     }
+    if (isset($_POST["volver"])){
+        header("../view/movwelcome.php");
+    }
 }
 function recogerDatos()
 {
