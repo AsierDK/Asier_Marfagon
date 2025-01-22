@@ -21,7 +21,8 @@ function saberVehiculosAlquilados($id)
 {
     try
     {
-        $stmt = $GLOBALS["conn"]->prepare("SELECT count(*) as alquilados from ralquileres where idcliente = :idcliente and fecha_devolucion is null and preciototal is null and fechahorapago is null");
+        $conn=conexionbbdd();
+        $stmt = $conn->prepare("SELECT count(*) as alquilados from ralquileres where idcliente = :idcliente and fecha_devolucion is null and preciototal is null and fechahorapago is null");
         $stmt->bindParam(':idcliente', $id);
         $stmt -> execute();
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
@@ -38,11 +39,10 @@ function realizarAlquiler($cesta,$id)
 {
     try
     {
-        $GLOBALS["conn"]->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $GLOBALS["conn"]->beginTransaction();
+        $conn=conexionbbdd();
         for ($i=0; $i < count($cesta); $i++)
         {
-            $stmt = $GLOBALS["conn"]->prepare("INSERT INTO ralquileres (idcliente,matricula,fecha_alquiler,fecha_devolucion,preciototal,fechahorapago) values (:idCliente,:matricula,now(),null,null,null)");
+            $stmt = $conn->prepare("INSERT INTO ralquileres (idcliente,matricula,fecha_alquiler,fecha_devolucion,preciototal,fechahorapago) values (:idCliente,:matricula,now(),null,null,null)");
             $stmt->bindParam(':idCliente', $id);
             $stmt->bindParam(':matricula', $cesta[$i]);
             $stmt -> execute();
@@ -50,11 +50,11 @@ function realizarAlquiler($cesta,$id)
             $stmt->bindParam(':matricula', $cesta[$i]);
             $stmt -> execute();
         }
-        $GLOBALS["conn"] -> commit();
+        $conn -> commit();
     }
     catch(PDOException $e)
     {
-        $GLOBALS["conn"] -> rollBack();
+        $conn -> rollBack();
         echo "Error: " . $e->getMessage();
     }
 }
