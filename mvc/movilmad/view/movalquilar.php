@@ -38,7 +38,7 @@
             }
             ?>
 			</select>
-			
+			<?php print $tabla?>
 		
 		<BR> <BR><BR><BR><BR><BR>
 		<div>

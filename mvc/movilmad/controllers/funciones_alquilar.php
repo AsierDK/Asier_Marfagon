@@ -13,7 +13,7 @@ $id=devolverID();
 date_default_timezone_set('GMT');
 $fecha = (date('d') ."/".date('m')."/".date('Y')."  ".(date('H')+1).":".date('i'));
 $resultado=saberVehiculosDisponibles();
-
+$tabla=recuperarCesta();
 require_once '../view/movalquilar.php';
 
 if($_SERVER["REQUEST_METHOD"] == "POST")
