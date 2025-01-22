@@ -38,9 +38,11 @@ function saberVehiculosAlquilados($id)
 
 function realizarAlquiler($cesta,$id)
 {
+    $conn=conexionbbdd();
     try
     {
-        $conn=conexionbbdd();
+        $conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+        $conn->beginTransaction();
         for ($i=0; $i < count($cesta); $i++)
         {
             $stmt = $conn->prepare("INSERT INTO ralquileres (idcliente,matricula,fecha_alquiler,fecha_devolucion,preciototal,fechahorapago) values (:idCliente,:matricula,now(),null,null,null)");
