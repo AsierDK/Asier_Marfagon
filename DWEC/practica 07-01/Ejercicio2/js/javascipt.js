@@ -8,12 +8,12 @@ function inicio()
     
     let boton = document.getElementById("boton");
     if (document.addEventListener)
-        boton.addEventListener("click",mandar);
+        boton.addEventListener("click",php);
     else if (document.attachEvent)
-        boton.attachEvent("onclick",mandar);
+        boton.attachEvent("onclick",php);
 }
 
-function mandar()
+function php()
 {
     let nombre = document.getElementById("nombre").value;
     let ape = document.getElementById("apellidos").value;
@@ -29,7 +29,7 @@ function mandar()
 		if (document.addEventListener)
 			conexion.addEventListener("readystatechange",mostrarContenido);
 		else if (document.attachEvent)
-			conexion.addEventListener("onreadystatechange",mostrarContenido);
+			conexion.attachEvent("onreadystatechange",mostrarContenido);
 
 		conexion.open("GET","php/php.php?nom="+nombre+"&ape="+ape+"&mod="+mod);
 		conexion.send(null);
