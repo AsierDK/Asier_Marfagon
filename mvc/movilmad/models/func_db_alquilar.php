@@ -32,6 +32,7 @@ function saberVehiculosAlquilados($id)
     {
         echo "Error: " . $e->getMessage();
     }
+    $conn=null;
     return $resultado[0]["alquilados"];
 }
 
@@ -56,6 +57,8 @@ function realizarAlquiler($cesta,$id)
     {
         $conn -> rollBack();
         echo "Error: " . $e->getMessage();
+    } finally {
+        $conn=null;
     }
 }
 ?>
