@@ -47,7 +47,7 @@ function realizarAlquiler($cesta,$id)
             $stmt->bindParam(':idCliente', $id);
             $stmt->bindParam(':matricula', $cesta[$i]);
             $stmt -> execute();
-            $stmt = $GLOBALS["conn"]->prepare("UPDATE rvehiculos set disponible = 'N' where matricula = :matricula ");
+            $stmt = $conn->prepare("UPDATE rvehiculos set disponible = 'N' where matricula = :matricula ");
             $stmt->bindParam(':matricula', $cesta[$i]);
             $stmt -> execute();
         }
