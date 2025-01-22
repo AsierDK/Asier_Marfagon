@@ -1,5 +1,4 @@
 <?php
-var_dump('hola');
 $archivo = $_POST["ciudad"];
 $file = file_get_contents("../".$archivo);
 $cadenaDiv = "<div id=\"contenido\">";
