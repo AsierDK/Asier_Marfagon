@@ -34,7 +34,7 @@ if (!empty($_POST)) {//URL DE RESP. ONLINE
             $datosCompra = json_decode($decodec, true);
             if ($datosCompra !== null && isset($datosCompra['Ds_Amount'])) {
                 $precioCompra = intval($datosCompra['Ds_Amount']) / 100;
-                require_once "../models/movdevolver.php";
+                require_once "../models/func_db_devolver.php";
                 insertarPago($precioCompra, true);
                 eliminarMatricula();
             }
@@ -43,7 +43,7 @@ if (!empty($_POST)) {//URL DE RESP. ONLINE
             $datosCompra = json_decode($decodec, true);
             if ($datosCompra !== null && isset($datosCompra['Ds_Amount'])) {
                 $precioCompra = intval($datosCompra['Ds_Amount']) / 100;
-                require_once "../models/movdevolver.php";
+                require_once "../models/func_db_devolver.php";
                 insertarPago($precioCompra, false);
                 eliminarMatricula();
             }
@@ -68,7 +68,7 @@ if (!empty($_POST)) {//URL DE RESP. ONLINE
                 $datosCompra = json_decode($decodec, true);
                 if ($datosCompra !== null && isset($datosCompra['Ds_Amount'])) {
                     $precioCompra = intval($datosCompra['Ds_Amount']) / 100;
-                    require_once "../models/movdevolver.php";
+                    require_once "../models/func_db_devolver.php";
                     insertarPago($precioCompra, true);
                     eliminarMatricula();
                 }
@@ -77,7 +77,7 @@ if (!empty($_POST)) {//URL DE RESP. ONLINE
                 $datosCompra = json_decode($decodec, true);
                 if ($datosCompra !== null && isset($datosCompra['Ds_Amount'])) {
                     $precioCompra = intval($datosCompra['Ds_Amount']) / 100;
-                    require_once "../models/movdevolver.php";
+                    require_once "../models/func_db_devolver.php";
                     insertarPago($precioCompra, false);
                     eliminarMatricula();
                 }

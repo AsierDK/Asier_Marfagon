@@ -11,7 +11,7 @@ function redireccionarPago($cantidadTotal)
     $trans="0";
     $url="";
     $id=time();
-    $urlOKKO="http://192.168.206.222/Php/Ejercicios/BBDD/MovilMad/MVC/controllers/funciones_compra.php";
+    $urlOKKO="http://192.168.206.223/Asier_Marfagon/mvc/movilmad/controllers/funciones_compra.php";
     $amount=intval($cantidadTotal*100);
     // Se Rellenan los campos
     $miObj->setParameter("DS_MERCHANT_AMOUNT",$amount);
