@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
      <title>Bienvenido a MovilMAD</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="../view/css/bootstrap.min.css">
   </head>
    
  <body>
@@ -36,6 +36,22 @@
 		
 		</div>		
 	</form>
+            <?php
+            if(isset($resultado))
+            {
+                if($resultado == null)
+                    print "<h2>No Ha Tenido Alquilado Ningun Vehiculo En Ese Periodo</h2>";
+                else
+                {
+                    print "<table border='1'>";
+                    print "<tr><th>Matricula</th><th>Marca</th><th>Modelo</th><th>Fecha Devolucion</th><th>Precio Total</th></tr>";
+                    foreach ($resultado as $coche) {
+                        print "<tr><td>".$coche["matricula"]."</td><td>".$coche["marca"]."</td><td>".$coche["modelo"]."</td><td>".$coche["fecha_devolucion"]."</td><td>".$coche["preciototal"]."€</td></tr>";
+                    }
+                    print "</table>";
+                }
+            }
+            ?>
 	<!-- FIN DEL FORMULARIO -->
     <a href = "">Cerrar Sesion</a>
 
