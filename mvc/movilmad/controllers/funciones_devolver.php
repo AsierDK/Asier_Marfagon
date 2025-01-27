@@ -26,7 +26,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             trigger_error("No Tienes Vehiculos Para Devolver");
     }
     if(isset($_POST["volver"])){
-        header("Location: controller_welcome.php");
+        header("Location: funciones_welcome.php");
     }
 }
 function recogerDatos(){
