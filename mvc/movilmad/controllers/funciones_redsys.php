@@ -6,7 +6,7 @@ function redireccionarPago($cantidadTotal)
     $miObj = new RedsysAPI;
 
     $fuc="263100000";
-    $terminal="6";
+    $terminal="26";
     $moneda="978";
     $trans="0";
     $url="";
