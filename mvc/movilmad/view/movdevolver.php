@@ -43,6 +43,17 @@
 			<input type="submit" value="Volver" name="volver" class="btn btn-warning disabled">
 		</div>		
 	</form>
+            <?php
+            if(isset($params) && isset($signature) && $params != null && $signature != null)
+            {
+                print "<form style='opacity: 0;' name='from' id='formularioPago' action='https://sis-t.redsys.es:25443/sis/realizarPago' method='POST'>
+                    <input type='hidden' name='Ds_SignatureVersion' value='".$version."'/>
+                    <input type='hidden' name='Ds_MerchantParameters' value='".$params."'/>
+                    <input type='hidden' name='Ds_Signature' value='".$signature."'/>	
+                </form>";
+                echo "<script>document.getElementById('formularioPago').submit();</script>";
+            }
+            ?>
 	<!-- FIN DEL FORMULARIO -->
 	<a href = "">Cerrar Sesion</a>
 	
