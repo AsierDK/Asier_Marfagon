@@ -4,7 +4,7 @@ function vehiculosAlquilados($id){
     try
     {
         $conn = conexionbbdd();
-        $stmt = $conn->prepare("SELECT v.matricula,marca,modelo from rvehiculos v,ralquileres a where disponible = 'N' and idcliente=:idcliente and v.matricula = a.matricula;");
+        $stmt = $conn->prepare("SELECT v.matricula,marca,modelo from rvehiculos v,ralquileres a where disponible = 'N' and idcliente=:idcliente and v.matricula = a.matricula and fecha_devolucion is NULL and preciototal is NULL and fechahorapago is NULL;");
         $stmt->bindParam(':idcliente', $id);
         $stmt -> execute();
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
