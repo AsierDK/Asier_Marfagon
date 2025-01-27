@@ -3,6 +3,7 @@ require_once '../db/db.php';
 
 function vehiculosAlquiladosPeriodoT($fechaInicio,$fechaFinal,$id)
 {
+    $resultado=null;
     try
     {
         $conn = conexionbbdd();
