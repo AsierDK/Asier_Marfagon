@@ -101,7 +101,18 @@ function recuperarCesta()
     }
     return $tablaCesta;
 }
-
+function insertarMatricula($matricula)
+{
+    $_SESSION["cliente"]["matDev"] = $matricula;
+}
+function eliminarMatricula()
+{
+    unset($_SESSION["cliente"]["matDev"]);
+}
+function devolverMatricula()
+{
+    return $_SESSION["cliente"]["matDev"];
+}
 function devolverCesta()
 {
     $cesta = null;
@@ -114,9 +125,5 @@ function eliminarSessionSinRedireccion()
     session_destroy();
     session_unset();
     setcookie("PHPSESSID", "" , time() - (86400 * 30), "/",$_SERVER['HTTP_HOST']);
-}
-function insertarMatricula($matricula)
-{
-    $_SESSION["cliente"]["matDev"] = $matricula;
 }
 ?>
