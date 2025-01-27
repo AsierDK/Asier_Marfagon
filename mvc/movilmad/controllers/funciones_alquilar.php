@@ -25,7 +25,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
         if($matricula != "")
         {
             annadirVehiculosALaCesta($matricula);
-            header("Refresh: 3");
+            header("Refresh: 0");
         }
     }
     if(isset($_POST["alquilar"]))
