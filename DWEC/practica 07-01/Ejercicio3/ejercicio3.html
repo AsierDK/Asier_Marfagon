@@ -1,35 +1,42 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="es">
     <head>
-        <meta charset="utf-8" />
-		<meta name="author" content="Sergio Quevedo " />	
-        <title>Ejercicio 1</title>
-		<link href="estilos/ejercicio3.css" rel="stylesheet" type="text/css" />
-		<script src="js/javascipt.js" type="text/javascript"> </script>
-	</head>
-	<body>
-		<header>
-		</header>
-		<nav>
-		</nav>
-		<main>
-			<section>
-				<article>
-					<div>
-						<fieldset>
-                            <label for="nombre">Nombre</label><input type="text" name="nombre" id="nombre"><br>
-                            <label for="apellidos">Apellidos</label><input type="text" name="apellidos" id="apellidos"><br>
-                            <label for="modulo">Modulo</label><input type="text" name="modulo" id="modulo"><br>
-                            <label for="nota">Nota</label><input type="text" name="nota" id="nota" ><input type="text" name="notaTexto" id="notaTexto" readonly><br>    
-                            <input type="button" value="Obtener Nota" name="boton" id="boton">
-                        </fieldset>
-					</div>
-				</article>
-			</section>
-		</main>
-		<footer>
-		</footer>
-		<aside>
-		</aside>						
+        <title>Ejercicio-03</title>
+        <meta charset="UTF-8">
+        <meta name="author" content="William Diaz">
+        <link href="./css/css.css" rel="stylesheet" type="text/css">
+        <script src="./js/js.js" type="text/javascript"></script>
+    </head>
+    <body>
+        <header></header>
+        <nav></nav>
+        <main>
+            <section>
+                <article>
+                    <div>
+                        <form>
+                            <fieldset>
+                                <label for="nombre">Nombre</label>
+                                <input type="text" name="nombre" id="nombre">
+                                <br><br>
+                                <label for="apellidos">Apelliados</label>
+                                <input type="text" name="apellidos" id="apellidos">
+                                <br><br>
+                                <label for="modulo">Módulo</label>
+                                <input type="text" name="modulo" id="modulo">
+                                <br><br>
+                                <label for="nota1">Nota</label>
+                                <input type="number" name="nota1" id="nota1" min="0" max="10">
+                                <input type="text" name="nota2" id="nota2" readonly>
+                                <br><br>
+                                <input type="button" name="obtener" id="obtener" value="Obtener Nota">
+                            </fieldset>
+                        </form>
+                    </div>
+                </article>
+            </section>
+        </main>
+        <footer></footer>
+        <aside></aside>
     </body>
 </html>
