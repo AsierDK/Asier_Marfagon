@@ -41,28 +41,11 @@ function saberValorDev($matricula,$id)
     }
     return $precioBase * ($tiempoTranscurrido/60);
 }
-function saberSiguienteNumeroPago()
-{
-    try
-    {
-        $conn=conexionbbdd();
-        $stmt = $conn->prepare("SELECT (max(num_pago) + 1) as numpago from ralquileres");
-        $stmt -> execute();
-        $stmt->setFetchMode(PDO::FETCH_ASSOC);
-        $resultado=$stmt->fetchAll();
-    }
-    catch(PDOException $e)
-    {
-        echo "Error: " . $e->getMessage();
-    }
-    return $resultado[0]["numpago"];
-}
 
 function insertarPago($precioCompra,$aceptado)
 {
     $matricula = devolverMatricula();
     $id = devolverId();
-    $numPago=saberSiguienteNumeroPago();
     $conn=conexionbbdd();
     try
     {
@@ -70,9 +53,8 @@ function insertarPago($precioCompra,$aceptado)
         $conn->beginTransaction();
         if($aceptado == true)
         {
-            $stmt = $conn->prepare("UPDATE ralquileres set fecha_devolucion = now(),preciototal=:precio,fechahorapago=now(),num_pago=:numpago where matricula = :mat and idcliente=:id and num_pago is null");
+            $stmt = $conn->prepare("UPDATE ralquileres set fecha_devolucion = now(),preciototal=:precio,fechahorapago=now() where matricula = :mat and idcliente=:id ");
             $stmt->bindParam(':precio', $precioCompra);
-            $stmt->bindParam(':numpago', $numPago);
             $stmt->bindParam(':mat', $matricula);
             $stmt->bindParam(':id', $id);
             $stmt -> execute();
