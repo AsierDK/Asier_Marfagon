@@ -115,4 +115,8 @@ function eliminarSessionSinRedireccion()
     session_unset();
     setcookie("PHPSESSID", "" , time() - (86400 * 30), "/",$_SERVER['HTTP_HOST']);
 }
+function insertarMatricula($matricula)
+{
+    $_SESSION["cliente"]["matDev"] = $matricula;
+}
 ?>

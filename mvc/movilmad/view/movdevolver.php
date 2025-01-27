@@ -22,8 +22,8 @@
 	<!-- INICIO DEL FORMULARIO -->
 	<form action="" method="post">
 	
-		<B>Bienvenido/a:</B>  <BR><BR>
-		<B>Identificador Cliente:</B>  <BR><BR>
+		<B>Bienvenido/a:</B> <?php print $nombre?> <BR><BR>
+		<B>Identificador Cliente:</B> <?php print $id?> <BR><BR>
 				
 			<B>Matricula/Marca/Modelo: </B><select name="vehiculos" class="form-control">
 				
