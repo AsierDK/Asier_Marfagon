@@ -36,5 +36,5 @@ function recogerDatos()
     return [$fechaInicio,$fechaFin];
 }
 
-require_once ("../views/movconsultar.php");
+require_once ("../view/movconsultar.php");
 ?>
