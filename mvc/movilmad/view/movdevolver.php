@@ -26,7 +26,16 @@
 		<B>Identificador Cliente:</B> <?php print $id?> <BR><BR>
 				
 			<B>Matricula/Marca/Modelo: </B><select name="vehiculos" class="form-control">
-				
+            <?php
+            if($resultado == null)
+                print "<option value=''>Ningun Coche Alquilado</option>";
+            else
+            {
+                foreach ($resultado as $coche) {
+                    print "<option value='".$coche["matricula"]."'>".$coche["matricula"]." | ".$coche["marca"]." | ".$coche["modelo"]."</option>";
+                }
+            }
+            ?>
 			</select>
 		<BR><BR>
 		<div>

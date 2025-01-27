@@ -22,9 +22,9 @@
 
 	<!-- INICIO DEL FORMULARIO -->
 	<form action="" method="post">
-				
-		<B>Bienvenido/a:</B>   <BR><BR>
-		<B>Identificador Cliente:</B> <BR><BR>
+
+        <B>Bienvenido/a:</B> <?php print $nombre?> <BR><BR>
+        <B>Identificador Cliente:</B> <?php print $id?> <BR><BR>
 		     
 			 Fecha Desde: <input type='date' name='fechadesde' value='' size=10 placeholder="fechadesde" class="form-control">
 			 Fecha Hasta: <input type='date' name='fechahasta' value='' size=10 placeholder="fechahasta" class="form-control"><br><br>
