@@ -40,7 +40,7 @@ function usuarioBloqueado($password){
         if($resultado==null){
             $resultado=false;
         }else{
-            if($resultado[0]['pendiente_pago']!=null && $resultado[0]["fecha_baja"]==null){
+            if($resultado[0]['pendiente_pago']!=0 && $resultado[0]["fecha_baja"]==null){
                 trigger_error("El usuario tiene pendientes pagos");
             }elseif ($resultado[0]['fecha_baja']!=null && $resultado[0]["pendiente_pago"]==0){
                 trigger_error("El usuario esta dado de baja");
