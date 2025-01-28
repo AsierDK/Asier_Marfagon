@@ -14,7 +14,7 @@ function db_login($email,$password){
 }
 function db_bloqueados($password){
     $conn=conexionbbdd();
-    $stmt = $conn->prepare("SELECT fecha_baja,pendiente_pago from rclientes where idcliente = :password");
+    $stmt = $conn->prepare("SELECT fecha_baja,pendiente_pago from rclientes where idcliente = :contrasena");
     $stmt->bindParam(':contrasena', $password);
     $stmt -> execute();
     $stmt->setFetchMode(PDO::FETCH_ASSOC);
