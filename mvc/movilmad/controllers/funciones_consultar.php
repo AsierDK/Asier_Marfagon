@@ -8,6 +8,9 @@ if(!verificarSessionExistente())
     eliminarSessionSinRedireccion();
     header("Location: ../index.php");
 }
+
+var_dump($_SESSION);
+
 $id = devolverId();
 $nombre = devolverNombre();
 

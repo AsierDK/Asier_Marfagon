@@ -8,7 +8,9 @@ if(!verificarSessionExistente())
     eliminarSessionSinRedireccion();
     header("Location: ../index.php");
 }
+
 var_dump($_SESSION);
+
 $nombre=devolvernombre();
 $id=devolverID();
 date_default_timezone_set('GMT');

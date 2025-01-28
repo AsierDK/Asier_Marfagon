@@ -7,6 +7,9 @@ if(!verificarSessionExistente())
     eliminarSessionSinRedireccion();
     header("Location: ../index.php");
 }
+
+var_dump($_SESSION);
+
 $nombre=devolvernombre();
 $id=devolverID();
 require_once '../view/movwelcome.php';
