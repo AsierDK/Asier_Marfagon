@@ -49,6 +49,7 @@
 		</div>		
 	</form>
 	<!-- FIN DEL FORMULARIO -->
+            <BR><a href="controller_cerrarS.php">Cerrar Sesión</a>
   </body>
    
 </html>

@@ -31,7 +31,7 @@
 		
 		
 		
-		  <BR><a href="">Cerrar Sesión</a>
+		  <BR><a href="controller_cerrarS.php">Cerrar Sesión</a>
 	</div>  
 	  
 	  

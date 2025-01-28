@@ -55,7 +55,7 @@
             }
             ?>
 	<!-- FIN DEL FORMULARIO -->
-	<a href = "">Cerrar Sesion</a>
+            <BR><a href="controller_cerrarS.php">Cerrar Sesión</a>
 	
   </body>
    
