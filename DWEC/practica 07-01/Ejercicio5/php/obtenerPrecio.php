@@ -1,50 +1,24 @@
 <?php
 header("Content-Type: text/xml");
-echo '<?xml version="1.0" encoding="UTF-8"?>';
-echo '<datos>';
-
-// Array bidimensional con los precios según marca y dimensión
+// Array bidimensional con precios
 $precios = [
-    "Sony" => [
-        "32\"" => 250,
-        "40\"" => 300,
-        "50\"" => 400,
-        "65\"" => 600
-    ],
-    "Samsung" => [
-        "32\"" => 200,
-        "40\"" => 250,
-        "50\"" => 350,
-        "65\"" => 500
-    ],
-    "LG" => [
-        "32\"" => 180,
-        "40\"" => 230,
-        "50\"" => 320,
-        "65\"" => 450
-    ],
-    "Panasonic" => [
-        "32\"" => 220,
-        "40\"" => 270,
-        "50\"" => 370,
-        "65\"" => 520
-    ]
+    "Sony" => ["32\"" => 300, "40\"" => 400, "50\"" => 500, "65\"" => 700],
+    "Samsung" => ["32\"" => 280, "40\"" => 380, "50\"" => 480, "65\"" => 680],
+    "LG" => ["32\"" => 260, "40\"" => 360, "50\"" => 460, "65\"" => 660],
+    "Panasonic" => ["32\"" => 250, "40\"" => 350, "50\"" => 450, "65\"" => 650],
 ];
-
-// Recibimos los parámetros enviados por la solicitud AJAX
-$marca = isset($_POST['modelo']['marca']) ? $_POST['modelo']['marca'] : '';
-$dimension = isset($_POST['modelo']['dimension']) ? $_POST['modelo']['dimension'] : '';
-
-// Si tenemos los valores de marca y dimensión, buscamos el precio
-if (!empty($marca) && !empty($dimension)) {
-    $precio = 0;
-    if (isset($precios[$marca][$dimension])) {
-        $precio = $precios[$marca][$dimension];
-    }
-
-    // Generar el XML con el precio correspondiente
-    echo '<precio>' . $precio . '</precio>';
-}
-
-echo '</datos>';
+// Recibir datos del cliente
+$postData = file_get_contents("php://input");
+$xml = simplexml_load_string($postData);
+$marca = (string)$xml->marca;
+$dimension = (string)$xml->dimension;
+// Obtener el precio
+$precio = isset($precios[$marca][$dimension]) ? $precios[$marca][$dimension] : "No disponible";
+// Responder con XML
+echo '<?xml version="1.0" encoding="UTF-8"?>';
+echo '<modelo>';
+echo '<marca>' . htmlspecialchars($marca) . '</marca>';
+echo '<dimension>' . htmlspecialchars($dimension) . '</dimension>';
+echo '<precio>' . $precio . '</precio>';
+echo '</modelo>';
 ?>
