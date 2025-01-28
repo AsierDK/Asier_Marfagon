@@ -65,9 +65,6 @@ function insertarPago($precioCompra,$aceptado)
         }
         else
         {
-            $stmt = $conn->prepare("UPDATE rvehiculos set disponible = 'S' where matricula = :mat");
-            $stmt->bindParam(':mat', $matricula);
-            $stmt -> execute();
             $stmt = $conn->prepare("UPDATE rclientes set pendiente_pago = (pendiente_pago + :pre) where idcliente = :id");
             $stmt->bindParam(':pre', $precioCompra);
             $stmt->bindParam(':id', $id);
