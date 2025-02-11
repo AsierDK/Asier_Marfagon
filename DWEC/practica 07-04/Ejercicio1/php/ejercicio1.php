@@ -1,5 +1,5 @@
 <?php
-$archivo = $_POST["ciudad"];
+$archivo = $_GET["ciudad"];
 $file = file_get_contents("../".$archivo);
 $cadenaDiv = "<div id=\"contenido\">";
 $posicionInicial = strpos($file,$cadenaDiv);
