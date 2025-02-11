@@ -21,20 +21,14 @@ function php()
 	if(nombre && ape && mod)
 	{
 		axios.get("php/php.php?nom="+nombre+"&ape="+ape+"&mod="+mod)
-			.then(correcto)
+			.then(mostrarContenido)
 			.catch(errores);
 	}
 }
 
-function correcto(respuesta){
-	if (respuesta.ok)
-		respuesta.text().then(mostrarContenido);
-}
-
-
 function mostrarContenido(dato)
 {
-	document.getElementById("nota").value=(dato);
+	document.getElementById("nota").value=(dato.data);
 }
 
 function errores(){
