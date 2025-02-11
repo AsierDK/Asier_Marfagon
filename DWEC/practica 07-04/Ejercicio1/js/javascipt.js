@@ -1,14 +1,14 @@
 if (document.addEventListener)
-	window.addEventListener("load",inicio)
+    window.addEventListener("load",inicio)
 else if (document.attachEvent)
-	window.attachEvent("onload",inicio)
+    window.attachEvent("onload",inicio)
 
 function inicio(){
     let sevilla = document.getElementById("sevilla");
     let cantabria = document.getElementById("cantabria");
     let cordoba = document.getElementById("cordoba");
     let segovia = document.getElementById("segovia");
-    
+
     if (document.addEventListener){
         sevilla.addEventListener("click",function(){php("sevilla.html");});
         cantabria.addEventListener("click",function(){php("cantabria.txt");});
@@ -20,27 +20,21 @@ function inicio(){
         cantabria.attachEvent("onclick",function(){php("cantabria.txt");});
         cordoba.attachEvent("onclick",function(){php("cordoba.txt");});
         segovia.attachEvent("onclick",function(){php("segovia.html");});
-        
+
     }
 }
 
 function php(ciudad){
-        axios.get("php/ejercicio1.php?ciudad="+ciudad)
-            .then(correcto)
-            .catch(errores);
-    }
+    axios.get("php/ejercicio1.php?ciudad="+ciudad)
+        .then(mostrarContenido)
+        .catch(errores);
+}
 
-    function correcto(respuesta){
-        if (respuesta.ok)
-            respuesta.text().then(mostrarContenido);
-    }
+function mostrarContenido(dato)
+{
+    document.getElementById("contenido").textContent=dato.data;
+}
 
-
-    function mostrarContenido(dato)
-    {
-        document.getElementById("contenido").textContent=dato;
-    }
-
-    function errores(){
-        alert("Error en la conexión");
-    }
+function errores(){
+    alert("Error en la conexión");
+}
