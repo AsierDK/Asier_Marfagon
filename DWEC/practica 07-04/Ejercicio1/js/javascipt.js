@@ -25,7 +25,7 @@ function inicio(){
 }
 
 function php(ciudad){
-        axios.get("php/ejercicio1.php")
+        axios.get("php/ejercicio1.php?ciudad="+ciudad)
             .then(correcto)
             .catch(errores);
     }
