@@ -20,11 +20,7 @@ function php()
     let mod = document.getElementById("modulo").value;
 	if(nombre && ape && mod)
 	{
-		let objetoFetch={
-			method:"GET",
-			headers:{"Content-Type":"application/x-www-form-urlencoded"}
-		}
-		fetch("php/php.php?nom="+nombre+"&ape="+ape+"&mod="+mod, objetoFetch)
+		axios.get("php/php.php?nom="+nombre+"&ape="+ape+"&mod="+mod)
 			.then(correcto)
 			.catch(errores);
 	}
