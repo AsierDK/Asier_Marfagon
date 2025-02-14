@@ -39,7 +39,7 @@ function enviarPeticionAJAX() {
             body:"nombre="+nombre+"&apellidos="+ape+"&modulo="+mod+"&nota="+nota
         }
 
-        fetch("php/php.php" ,objetoFetch)
+        axios.post("php/php.php" ,objetoFetch)
             .then(correcto)
             .catch(errores);
     }
