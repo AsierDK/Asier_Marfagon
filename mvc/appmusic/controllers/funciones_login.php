@@ -30,4 +30,5 @@ elseif($_SERVER["REQUEST_METHOD"] == "POST")
         echo "Error: " . $e->getMessage();
     }
 }
+require_once 'view/movlogin.php';
 ?>
