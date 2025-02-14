@@ -1,7 +1,7 @@
 <?php
-include_once "controllers/funciones_comunes";
-include_once "controllers/funciones_sesion";
-require_once "models/func_db_login";
+include_once "controllers/funciones_comunes.php";
+include_once "controllers/funciones_session.php";
+require_once "models/func_db_login.php";
 
 if(verificarSessionExistente())
     header("Location: controllers/controller_welcome.php");
