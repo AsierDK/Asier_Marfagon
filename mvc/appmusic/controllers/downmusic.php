@@ -31,7 +31,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
         if($cesta != null)
         {
             $precioTotal=SaberPrecio($cesta);
-            redireccionarPago($precioTotal)
+            redireccionarPago($precioTotal);
             realizarAlquiler($cesta,$id);
             vaciarCesta();
             header("Refresh: 0");
