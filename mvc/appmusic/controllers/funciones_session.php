@@ -33,7 +33,7 @@
         setcookie("PHPSESSID", "" , time() - (86400 * 30), "/",$_SERVER['HTTP_HOST']);
         header("Location: ../view/movlogin.php");
     }
-function annadirVehiculosALaCesta($matricula)
+function annadirCancionesALaCesta($matricula)
 {
     if(isset($_SESSION["cliente"]["cesta"]))
     {

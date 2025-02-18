@@ -7,12 +7,16 @@ else if (document.attachEvent){
 
 function inicio(){
     let localidad=document.getElementById("localidad");
+    let borrar = document.getElementById("borrar");
     if (document.addEventListener){
 		localidad.addEventListener("click",localidades)
+        borrar.addEventListener("click",borrarAnnadirP)
+
     }
 	else if (document.attachEvent){
         localidad.attachEvent("onclick", localidades);
-       
+        borrar.addEventListener("click",borrarAnnadirP)
+
     }
 }
 function localidades(){
@@ -58,4 +62,134 @@ function localidades(){
             console.log(li);
             tabla.append(li);
         }
+}
+function borrarAnnadirP(){
+    let selectPais=document.getElementById("paises");
+    let pais=selectPais.getElementsByTagName("option");
+    if(pais.length<1){
+        annadirP();
+    }else{
+        borrarP();
+    }
+}
+function borrarP(){
+    let paises=document.getElementById("paises").value.trim();
+    console.log(paises);
+    let region;
+    switch (paises) {
+        case "España":
+            region = ["Asturias", "Galicia", "Cantabria", "País Vasco", "Navarra", "Aragón", "Cataluña", "Castilla y León", "Madrid", "La Rioja", "Extremadura", "Castilla La Mancha", "Valencia", "Murcia", "Andalucía", "Canarias", "Baleares"];
+            break;
+        case "Alemania":
+            region = ["Baden-Wurtemberg", "Baviera", "Berlín", "Brandeburgo", "Bremen", "Hamburgo", "Hesse", "Mecklemburgo-Pomerania Occidental", "Baja Sajonia", "Renania del Norte-Westfalia", "Renania-Palatinado", "Sarre", "Sajonia", "Sajonia-Anhalt", "Schleswig-Holstein", "Turingia"];
+            break;
+        case "Grecia":
+            region = ["Tracia", "Macedonian", "Tesalia", "Epiro", "Grecia Central", "Peloponeso", "Islas del Egeo", "Islas Jónicas", "Creta"];
+            break;
+        case "Inglaterra":
+            region = ["Gran Londres (Greater London)", "Sudeste de Inglaterra (South East England)", "Sudoeste de Inglaterra (South West England)", "Midlands del Oeste (West Midlands)", "Noroeste de Inglaterra (North West England)", "Nordeste de Inglaterra (North East England)", "Yorkshire y Humber (Yorkshire and the Humber)", "Midlands Oriental (East Midlands)", "Inglaterra mega (East of England)"];
+            break;
+        case "Portugal":
+            region = ["Algarve", "Alto Alentejo", "Baixo Alentejo", "Beira Alta", "BeiraBaixa", "Beira Litoral", "Douro Litoral", "Estremadura", "Minho", "Ribatejo", "Trás-os-Montes", "Alto Douro"];
+            break;
+        case "Italia":
+            region = ["Abruzzo", "Basilicata", "Calabria", "Campania", "Cerdeña", "Emilia Romagna", "FriuliVeneziaGiulia", "Lazio", "Liguria", "Lombardia", "Marche", "Molise", "Piamonte", "Puglia", "Sicilia", "Toscana", "Trentino Alto Adige", "Umbria", "Valle d'Aosta", "Veneto"];
+            break;
+        case "Francia":
+            region = ["Alsacia", "Aquitania", "Auvernia", "Borgoña", "Bretaña", "Valle del Loira", "Champagne-Ardenas", "Córcega", "Franche-Comte", "Paris / Ile de France", "Languedoc - Roussillon", "Limousin", "Lorena", "Midi-Pyrénées", "Nord Pas-de-Calais", "Normandía", "País del Loira", "Picardía", "Poitou-Charentes", "Provenza-Alpes-Costa Azul", "Rhône-Alpes", "Riviera Costa Azul"];
+            break;
+    }
+    let tabla=document.getElementById("regiones");
+    console.log(tabla);
+    console.log(region);
+    let contenido = tabla.getElementsByTagName("td");
+    console.log(contenido[0]);
+    for (let i = 0; i < contenido.length; i++) {
+       for(let j=0;j< region.length;j++){
+            if(contenido[i].textContent==region[j]){
+                contenido[i].remove();
+            }
+       }
+    }
+    let selectPais=document.getElementById("paises");
+    let pais=selectPais.getElementsByTagName("option");
+    for (let i = 0; i < pais.length; i++) {
+        if(pais[i].textContent==paises){
+            pais[i].remove();
+        }   
+    }
+    console.log(pais);
+    if(pais.length<1){
+        borrar.value="Añadir";
+        let arrrayP = ["España","Alemania","Grecia","Inglaterra","Portugal","Italia","Francia"];
+        for (let i = 0; i < arrrayP.length; i++) {
+            let option = document.createElement("option");
+            let contenido = document.createTextNode(arrayP[i]);
+            option.append(contenido);
+            pais.item(pais.length).append(option);
+        }
+    }
+}
+function annadirP(){
+    let paises=document.getElementById("paises").value.trim();
+    console.log(paises);
+    let region;
+    switch (paises) {
+        case "España":
+            region = ["Asturias", "Galicia", "Cantabria", "País Vasco", "Navarra", "Aragón", "Cataluña", "Castilla y León", "Madrid", "La Rioja", "Extremadura", "Castilla La Mancha", "Valencia", "Murcia", "Andalucía", "Canarias", "Baleares"];
+            break;
+        case "Alemania":
+            region = ["Baden-Wurtemberg", "Baviera", "Berlín", "Brandeburgo", "Bremen", "Hamburgo", "Hesse", "Mecklemburgo-Pomerania Occidental", "Baja Sajonia", "Renania del Norte-Westfalia", "Renania-Palatinado", "Sarre", "Sajonia", "Sajonia-Anhalt", "Schleswig-Holstein", "Turingia"];
+            break;
+        case "Grecia":
+            region = ["Tracia", "Macedonian", "Tesalia", "Epiro", "Grecia Central", "Peloponeso", "Islas del Egeo", "Islas Jónicas", "Creta"];
+            break;
+        case "Inglaterra":
+            region = ["Gran Londres (Greater London)", "Sudeste de Inglaterra (South East England)", "Sudoeste de Inglaterra (South West England)", "Midlands del Oeste (West Midlands)", "Noroeste de Inglaterra (North West England)", "Nordeste de Inglaterra (North East England)", "Yorkshire y Humber (Yorkshire and the Humber)", "Midlands Oriental (East Midlands)", "Inglaterra mega (East of England)"];
+            break;
+        case "Portugal":
+            region = ["Algarve", "Alto Alentejo", "Baixo Alentejo", "Beira Alta", "BeiraBaixa", "Beira Litoral", "Douro Litoral", "Estremadura", "Minho", "Ribatejo", "Trás-os-Montes", "Alto Douro"];
+            break;
+        case "Italia":
+            region = ["Abruzzo", "Basilicata", "Calabria", "Campania", "Cerdeña", "Emilia Romagna", "FriuliVeneziaGiulia", "Lazio", "Liguria", "Lombardia", "Marche", "Molise", "Piamonte", "Puglia", "Sicilia", "Toscana", "Trentino Alto Adige", "Umbria", "Valle d'Aosta", "Veneto"];
+            break;
+        case "Francia":
+            region = ["Alsacia", "Aquitania", "Auvernia", "Borgoña", "Bretaña", "Valle del Loira", "Champagne-Ardenas", "Córcega", "Franche-Comte", "Paris / Ile de France", "Languedoc - Roussillon", "Limousin", "Lorena", "Midi-Pyrénées", "Nord Pas-de-Calais", "Normandía", "País del Loira", "Picardía", "Poitou-Charentes", "Provenza-Alpes-Costa Azul", "Rhône-Alpes", "Riviera Costa Azul"];
+            break;
+    }
+    let tabla=document.getElementById("regiones");
+    console.log(tabla);
+    console.log(region);
+    let contenido = tabla.getElementsByTagName("tr");
+    console.log(contenido[0]);
+    let indice=0;
+    let indice2=0;
+    while(contenido.length>indice && regiones.length>indice2){
+        if(contenido[indice].length<3){
+            let td=document.createElement("td");
+            let content=document.createTextNode(regiones[indice2]);
+            td.append(content);
+            contenido.item(contenido[indice].length).append(td);
+            indice2++;
+        }
+        indice++;
+    }
+    let selectPais=document.getElementById("paises");
+    let pais=selectPais.getElementsByTagName("option");
+    for (let i = 0; i < pais.length; i++) {
+        if(pais[i].textContent==paises){
+            pais[i].remove();
+        }   
+    }
+    if(pais.length<1){
+        borrar.value="Borrar";
+        let arrrayP = ["España","Alemania","Grecia","Inglaterra","Portugal","Italia","Francia"];
+        console.log(arrayP);
+        for (let i = 0; i < arrrayP.length; i++) {
+            let option = document.createElement("option");
+            let contenido = document.createTextNode(arrayP[i]);
+            option.append(contenido);
+            pais.item(pais.length).append(option);
+        }
+    }
 }
